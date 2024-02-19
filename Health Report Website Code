@@ -1,0 +1,128 @@
+<!-- Access the Health Gadget through a current health report for patients and GP or Doctors-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Health Monitoring System</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css'>
+  <link rel='stylesheet' type='text/css' href='style.css'>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div id='page'>
+    <div class='header'>
+      <h1>Health Monitoring System</h1>
+      <a href='Medical Report.html' id='Medical Report-link'>Medical Reports</a>
+    </div>
+    <!-- Login Page -->
+    <div id='login-page' align='center'>
+      <div class='box-full'>
+        <h2>Login</h2>
+        <form id='login-form'>
+          <label for='username'>Username:</label>
+          <input type='text' id='username' name='username' required>
+          <br>
+          <label for='password'>Password:</label>
+          <input type='password' id='password' name='password' required>
+          <br>
+          <button type='button' onclick='login();'>Login</button>
+          <br>
+          <button type='button' onclick='toggleForms();'>Create Account</button>
+        </form>
+      </div>
+    </div>
+    <!-- Create Account Page -->
+    <div id='create-account-page' align='center' style='display:none;'>
+      <div class='box-full'>
+        <h2>Create Account</h2>
+        <form id='create-account-form' onsubmit='createAccount(); return false;'>
+          <label for='name'>Name:</label>
+          <input type='text' id='name' name='name' required>
+          <br>
+          <label for='new-username'>Username:</label>
+          <input type='text' id='new-username' name='new-username' required>
+          <br>
+          <label for='new-password'>Password:</label>
+          <input type='password' id='new-password' name='new-password' required>
+          <br>
+          <input type='submit' value='Create Account'>
+          <br>
+          <button type='button' onclick='toggleForms();'>Back to Login</button>
+        </form>
+        <p>Please memorize the medical ID: <span id="medical-id"></span></p>
+      </div>
+    </div>
+    <!-- Sensor Readings -->
+    <div id='sensor-readings' align='center' style='display:none;'>
+      <div class='box-full' align='left'>
+        <h2>Sensors Readings</h2>
+        <div class='sensors-container'>
+          <!-- For Temperature -->
+          <div class='sensors'>
+            <p class='sensor'>
+              <i class='fas fa-thermometer-half' style='color:#0275d8'></i>
+              <span class='sensor-labels'> Room Temperature </span>
+              <!-- Assuming temperature is a variable -->
+              <!-- Replace (int)temperature with the actual variable -->
+              <!-- Make sure to properly format the value -->
+              25<sup class='units'>°C</sup>
+            </p>
+            <hr>
+          </div>
+          <!-- For Humidity -->
+          <div class='sensors'>
+            <p class='sensor'>
+              <i class='fas fa-tint' style='color:#5bc0de'></i>
+              <span class='sensor-labels'> Room Humidity </span>
+              <!-- Assuming humidity is a variable -->
+              <!-- Replace (int)humidity with the actual variable -->
+              <!-- Make sure to properly format the value -->
+              60<sup class='units'>%</sup>
+            </p>
+            <hr>
+          </div>
+          <!-- For Heart Rate -->
+          <div class='sensors'>
+            <p class='sensor'>
+              <i class='fas fa-heartbeat' style='color:#cc3300'></i>
+              <span class='sensor-labels'> Heart Rate </span>
+              <!-- Assuming BPM is a variable -->
+              <!-- Replace (int)BPM with the actual variable -->
+              <!-- Make sure to properly format the value -->
+              75<sup class='units'>BPM</sup>
+            </p>
+            <hr>
+          </div>
+          <!-- For SpO2 -->
+          <div class='sensors'>
+            <p class='sensor'>
+              <i class='fas fa-burn' style='color:#f7347a'></i>
+              <span class='sensor-labels'> SpO2 </span>
+              <!-- Assuming SpO2 is a variable -->
+              <!-- Replace (int)SpO2 with the actual variable -->
+              <!-- Make sure to properly format the value -->
+              98<sup class='units'>%</sup>
+            </p>
+            <hr>
+          </div>
+          <!-- For Body Temperature -->
+          <div class='sensors'>
+            <p class='sensor'>
+              <i class='fas fa-thermometer-full' style='color:#d9534f'></i>
+              <span class='sensor-labels'> Body Temperature </span>
+              <!-- Assuming bodytemperature is a variable -->
+              <!-- Replace (int)bodytemperature with the actual variable -->
+              <!-- Make sure to properly format the value -->
+              37<sup class='units'>°C</sup>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
