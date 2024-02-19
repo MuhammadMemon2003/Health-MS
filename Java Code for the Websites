@@ -1,0 +1,109 @@
+<!-- Script.java file for the websites -->
+setInterval(loadDoc, 1000);
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.body.innerHTML = this.responseText
+    }
+  };
+  xhttp.open("GET", "/", true);
+  xhttp.send();
+}
+
+// Function to toggle between login and create account forms
+function toggleForms() {
+  var loginForm = document.getElementById('login-page');
+  var createAccountForm = document.getElementById('create-account-page');
+  var sensorReadings = document.getElementById('sensor-readings');
+
+  loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+  createAccountForm.style.display = createAccountForm.style.display === 'none' ? 'block' : 'none';
+  sensorReadings.style.display = 'none'; // Hide sensor readings when toggling forms
+}
+
+// Function to handle login process
+function login() {
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+
+  // Placeholder for actual login authentication
+  // Here, we assume successful login to proceed to the years list
+  if (username && password) {
+    showYears(); // Show years list
+    var loginForm = document.getElementById('login-page');
+    loginForm.style.display = 'none'; // Hide login form
+  } else {
+    alert('Please enter username and password.'); // Alert if fields are empty
+  }
+}
+
+// Function to handle account creation process
+function createAccount() {
+  var medicalId = generateMedicalId(); // Generate medical ID here
+  var medicalIdField = document.getElementById('medical-id');
+  var sensorReadings = document.getElementById('sensor-readings');
+  var createAccountForm = document.getElementById('create-account-page');
+
+  medicalIdField.textContent = medicalId;
+  createAccountForm.style.display = 'none'; // Hide create account form
+  sensorReadings.style.display = 'block'; // Show sensor readings
+}
+
+// Function to show health reports for a specific year
+function showHealthReport(year) {
+  var healthReportContainer = document.getElementById('health-report-container');
+  var yearsList = document.getElementById('years-list');
+
+  // Placeholder for retrieving health data for the selected year
+  // Here, we assume we have the data and display it accordingly
+  var healthData = getHealthData(year);
+
+  document.getElementById('health-report-title').textContent = 'Health Report ' + year;
+  document.getElementById('name-display').textContent = healthData.name;
+  document.getElementById('phone-display').textContent = healthData.phone;
+  document.getElementById('medical-id-display').textContent = healthData.medicalId;
+  document.getElementById('heart-rate').textContent = healthData.heartRate;
+  document.getElementById('body-temperature').textContent = healthData.bodyTemperature;
+  document.getElementById('spo2').textContent = healthData.spo2;
+  document.getElementById('health-status').textContent = healthData.healthStatus;
+
+  healthReportContainer.style.display = 'block'; // Show health report container
+  yearsList.style.display = 'none'; // Hide years list
+}
+
+// Function to simulate fetching health data from the server for the given year
+function getHealthData(year) {
+  // Placeholder health data for demonstration
+  // In a real application, this data would be fetched from a server
+  var healthData = {
+    name: 'John Doe',
+    phone: '+1234567890',
+    medicalId: '123456',
+    heartRate: '75',
+    bodyTemperature: '37',
+    spo2: '98',
+    healthStatus: 'Normal'
+  };
+
+  return healthData;
+}
+
+// Function to go back to the list of years
+function goBackToYears() {
+  var healthReportContainer = document.getElementById('health-report-container');
+  var yearsList = document.getElementById('years-list');
+
+  healthReportContainer.style.display = 'none'; // Hide health report container
+  yearsList.style.display = 'block'; // Show years list
+}
+
+// Function to show available years for health reports
+function showYears() {
+  var yearsList = document.getElementById('years-list');
+  var loginPage = document.getElementById('login-page');
+
+  yearsList.style.display = 'block'; // Show years list
+  loginPage.style.display = 'none'; // Hide login form
+}
