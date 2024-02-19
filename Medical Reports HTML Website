@@ -1,0 +1,68 @@
+<!-- Acesses the Health Gadget through multiple Medical Reports -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Health Reports</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css'>
+  <link rel='stylesheet' type='text/css' href='style.css'>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div id='page'>
+    <div class='header'>
+      <h1>Health Reports</h1>
+    </div>
+
+    <!-- Login Page -->
+    <div id='login-page' align='center'>
+      <div class='box-full'>
+        <h2>Login</h2>
+        <form id='login-form'>
+          <label for='Medical ID'>Medical ID:</label>
+          <input type='text' id='username' name='username' required>
+          <br>
+          <label for='password'>Password:</label>
+          <input type='password' id='password' name='password' required>
+          <br>
+          <input type='button' value='View Health Reports' onclick='login()'> <!-- Changed type to button and added onclick -->
+        </form>
+      </div>
+    </div>
+
+    <!-- Years List -->
+    <div id='years-list' align='center' style='display: none;'> <!-- Initially hidden -->
+      <h2>Available Years</h2>
+      <ul>
+        <li><a href='#' id='year-2024' onclick='showHealthReport(2024)'>2024</a></li>
+        <li><a href='#' id='year-2023' onclick='showHealthReport(2023)'>2023</a></li>
+        <li><a href='#' id='year-2022' onclick='showHealthReport(2022)'>2022</a></li>
+        <li><a href='#' id='year-2021' onclick='showHealthReport(2022)'>2021</a></li>
+        <li><a href='#' id='year-2020' onclick='showHealthReport(2022)'>2020</a></li>
+        <li><a href='#' id='year-2019' onclick='showHealthReport(2022)'>2019</a></li>
+      </ul>
+    </div>
+
+    <!-- Health Report Container -->
+    <div id='health-report-container' style='display: none;'>
+      <div class='box-full' align='left'>
+        <h2 id='health-report-title'></h2>
+        <!-- Placeholder for Health Information -->
+        <p>Name: <span id='name-display'></span></p>
+        <p>Phone Number: <span id='phone-display'></span></p>
+        <p>Medical ID: <span id='medical-id-display'></span></p>
+        <p>Heart Rate: <span id='heart-rate'></span> BPM</p>
+        <p>Body Temperature: <span id='body-temperature'></span> °C</p>
+        <p>SpO2: <span id='spo2'></span>%</p>
+        <p>Heart rate  Status: <span id='health-status'></span></p>
+        <br>
+        <button onclick='goBackToYears()'>Back to Years</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
